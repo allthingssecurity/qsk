@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Quantum examples</p>
+        <h1>Quantum Canvas</h1>
+        <p class="lede">Minimal workspace with essential quantum circuits and headline algorithms. Load, tweak, preview, or hit the API to run real Qiskit.</p>
+      </div>
+      <div class="pill">Preview + API</div>
+    </header>
+
+    <main class="layout">
+      <section class="library">
+        <div class="lib-header">
+          <div>
+            <p class="eyebrow">Examples</p>
+            <h2>Pick a circuit</h2>
+            <p class="muted">From basics to algorithms. Filter and load to see a quick explanation.</p>
+          </div>
+          <div class="filters">
+            <select id="levelFilter" aria-label="Filter by difficulty">
+              <option value="all">All levels</option>
+              <option value="basic">Basics</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+            <input id="search" type="search" placeholder="Search (had, cnot, grover, shor, tsp)" aria-label="Search examples" />
+          </div>
+        </div>
+        <div id="exampleList" class="cards"></div>
+      </section>
+
+      <section class="work">
+        <div class="work-header">
+          <h2>Editor</h2>
+          <div class="actions">
+            <button id="random" class="ghost">Shuffle</button>
+            <button id="clear" class="ghost">Clear</button>
+            <button id="run">Run (preview)</button>
+            <button id="runApi" class="accent">Run via API</button>
+            <button id="explain" class="ghost">Play explainer</button>
+          </div>
+        </div>
+        <textarea id="editor" spellcheck="false"></textarea>
+        <div class="api-row">
+          <label for="apiUrl">API endpoint</label>
+          <input id="apiUrl" type="url" placeholder="http://localhost:8000/run" />
+          <span class="hint">Deployable on a free host (Render/Fly/Netlify functions). Set URL here.</span>
+        </div>
+        <div class="panel output">
+          <div class="output-header">
+            <div>
+              <p class="eyebrow">Run result</p>
+              <p id="summary" class="muted">Load an example to see details.</p>
+            </div>
+            <button id="copy" class="ghost">Copy code</button>
+          </div>
+          <div class="explainer" id="explainer">
+            <div class="explainer__header">
+              <div>
+                <p class="eyebrow">Explainer</p>
+                <p class="muted" id="explainerStatus">Select a circuit to see the walkthrough.</p>
+              </div>
+              <div class="explainer__progress">
+                <div id="explainerProgress"></div>
+              </div>
+            </div>
+            <div class="explainer__body">
+              <div class="explain-current">
+                <div class="explain-text" id="explainText">No step loaded.</div>
+                <pre class="explain-code" id="explainCode">Code will appear here.</pre>
+              </div>
+              <div class="visual" id="visual">
+                <p class="muted">Visualizer</p>
+                <div class="visual-grid" id="visualGrid"></div>
+              </div>
+              <ul class="explain-list" id="explainList"></ul>
+            </div>
+          </div>
+          <div class="viz" id="viz"></div>
+          <pre id="console" class="console">Ready.</pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
